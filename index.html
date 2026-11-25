@@ -80,7 +80,115 @@
           </div>
         </div>
       </section>
+      <section class="container py-4" aria-labelledby="titulo-catalogo">
+        <h2 id="titulo-catalogo">Catálogo</h2>
+
+        <div class="row g-3 align-items-end mb-3">
+          <div class="col-12 col-lg-5">
+            <div class="btn-group" role="group" aria-label="Filtrar mascotas">
+              <button
+                type="button"
+                class="btn btn-outline-primary active"
+                data-categoria="todas"
+                aria-pressed="true"
+              >
+                Todas
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                data-categoria="perros"
+                aria-pressed="false"
+              >
+                Perros
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                data-categoria="gatos"
+                aria-pressed="false"
+              >
+                Gatos
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                data-categoria="conejos"
+                aria-pressed="false"
+              >
+                Conejos
+              </button>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <label for="buscador" class="form-label">Buscar mascotas</label>
+            <input
+              type="search"
+              id="buscador"
+              class="form-control"
+              placeholder="Buscar..."
+            />
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-3">
+            <label for="orden" class="form-label">Ordenar por</label>
+
+            <select id="orden" class="form-select">
+              <option value="nombre-asc">Nombre A-Z</option>
+              <option value="valor-asc">Menor edad</option>
+              <option value="valor-desc">Mayor edad</option>
+            </select>
+          </div>
+        </div>
+
+        <p id="contador" aria-live="polite">Mostrando 12 de 12</p>
+
+        <div
+          id="catalogo"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
+        ></div>
+      </section>
+      <section
+        id="acerca"
+        class="container py-5"
+        aria-labelledby="titulo-acerca"
+      >
+        <div class="row align-items-center g-4">
+          <div class="col-md-6">
+            <h2 id="titulo-acerca">La fundación</h2>
+
+            <p>
+              Patitas a Casa rescata, esteriliza y cuida perros, gatos y conejos
+              abandonados. Ninguna mascota se entrega sin una visita previa al
+              hogar que la va a recibir.
+            </p>
+          </div>
+
+          <div class="col-md-6">
+            <img
+              src="img/placeholder.svg"
+              class="img-fluid rounded-4 w-100"
+              alt="Imagen ilustrativa de la fundación de adopción"
+            />
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer id="contacto" class="py-4">
+      <div class="container">
+        <h2>Patitas a Casa</h2>
+
+        <p>Vereda La Florida, km 5, Pereira</p>
+        <p>Teléfono: 310 555 2323</p>
+        <p>Horario: Sábados y domingos de 9:00 a. m. a 4:00 p. m.</p>
+        <p>Correo: adopciones@patitasacasa.org</p>
+      </div>
+    </footer>
     <!--
     TODO (issue #2): estructura de la página. Consulta ISSUES.md, la guía y la
     página de tu empresa en el Manual de marca: ahí dice cómo va la navbar,
