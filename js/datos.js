@@ -41,7 +41,7 @@ const items = [
     descripcion: "Juguetona y muy cariñosa con los niños.",
     imagen: "img/placeholder.svg",
     edadMeses: 18,
-    tamaño: "mediano",
+    tamano: "mediano",
     vacunado: "si",
   },
   {

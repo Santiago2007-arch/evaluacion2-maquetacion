@@ -34,5 +34,55 @@
  */
 
 :root {
-  /* TODO */
+   --marca-primario: #b23c0a;
+  --marca-secundario: #0e7c86;
+  --marca-fondo: #fff8f3;
+  --marca-texto: #2a1f1a;
+  --marca-fuente: 'Nunito', sans-serif;
+  --marca-fuente-titulos: 'Baloo 2', sans-serif;
+
+  --bs-body-bg: var(--marca-fondo);
+  --bs-body-color: var(--marca-texto);
+  --bs-body-font-family: var(--marca-fuente);
+}
+
+h1, h2, h3 {
+  font-family: var(--marca-fuente-titulos);
+}
+
+.navbar {
+  background-color: var(--marca-primario);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--marca-primario);
+  --bs-btn-border-color: var(--marca-primario);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--marca-primario);
+  --bs-btn-hover-border-color: var(--marca-primario);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--marca-primario);
+  --bs-btn-active-border-color: var(--marca-primario);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--marca-primario);
+  --bs-btn-border-color: var(--marca-primario);
+  --bs-btn-hover-bg: var(--marca-texto);
+  --bs-btn-hover-border-color: var(--marca-texto);
+}
+
+.badge {
+  background-color: var(--marca-secundario);
+  color: #ffffff;
+}
+
+footer {
+  background-color: var(--marca-texto);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 3px solid var(--marca-secundario);
+  outline-offset: 3px;
 }
