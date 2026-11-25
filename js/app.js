@@ -155,7 +155,16 @@ function aplicarFiltros(lista, estadoActual) {
 // TODO: calcula la lista con aplicarFiltros(items, estado), pinta el
 // resultado en #catalogo con innerHTML y actualiza #contador
 // (por ejemplo "Mostrando 5 de 12 resultados").
-function actualizarVista() {}
+function actualizarVista() {
+  const lista = aplicarFiltros(items, estado);
+
+  const catalogo = document.getElementById("catalogo");
+  const contador = document.getElementById("contador");
+
+  catalogo.innerHTML = generarHTML(lista);
+
+  contador.textContent = `Mostrando ${lista.length} de ${items.length} resultados`;
+}
 
 // TODO: conecta los eventos y pinta por primera vez.
 //   click  en cada botón con data-categoria: actualiza estado.categoria
@@ -164,10 +173,37 @@ function actualizarVista() {}
 //   change en #orden: actualiza estado.orden
 // Después de cada cambio llama a actualizarVista().
 function iniciar() {
-  document.getElementById("catalogo").innerHTML = generarHTML(items);
+  const botones = document.querySelectorAll("[data-categoria]");
+  const buscador = document.getElementById("buscador");
+  const orden = document.getElementById("orden");
 
-  document.getElementById("contador").textContent =
-    `Mostrando ${items.length} resultados`;
+  botones.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      estado.categoria = boton.dataset.categoria;
+
+      botones.forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("active");
+      });
+
+      boton.setAttribute("aria-pressed", "true");
+      boton.classList.add("active");
+
+      actualizarVista();
+    });
+  });
+
+  buscador.addEventListener("input", () => {
+    estado.texto = buscador.value;
+    actualizarVista();
+  });
+
+  orden.addEventListener("change", () => {
+    estado.orden = orden.value;
+    actualizarVista();
+  });
+
+  actualizarVista();
 }
 
 // No cambies estas líneas: así el archivo también carga en el verificador,
