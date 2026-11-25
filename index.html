@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- TODO (issue #2): cambia el título por el nombre de tu proyecto -->
-    <title>Plantilla Evaluación 2</title>
+    <title>Patitas a Casa</title>
 
     <!-- Bootstrap 5.3 por CDN. Tu hoja de estilos va DESPUÉS para poder personalizarlo. -->
     <link
@@ -18,6 +18,69 @@
     <link rel="stylesheet" href="css/estilos.css" />
   </head>
   <body>
+    <a class="visually-hidden-focusable" href="#contenido">
+      Saltar al contenido
+    </a>
+
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">Patitas a Casa</a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Abrir menú"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#catalogo">Catálogo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#acerca">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacto">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="container py-5" aria-labelledby="titulo-principal">
+        <div class="row align-items-center g-4">
+          <div class="col-md-6">
+            <h1 id="titulo-principal">
+              Adoptar es dar una segunda oportunidad
+            </h1>
+
+            <p>Adoptar es dar una segunda oportunidad</p>
+
+            <a href="#catalogo" class="btn btn-primary">
+              Conoce a las mascotas
+            </a>
+          </div>
+
+          <div class="col-md-6">
+            <img
+              src="img/placeholder.svg"
+              class="img-fluid rounded-4 w-100"
+              alt="Imagen ilustrativa de Patitas a Casa"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
     <!--
     TODO (issue #2): estructura de la página. Consulta ISSUES.md, la guía y la
     página de tu empresa en el Manual de marca: ahí dice cómo va la navbar,
