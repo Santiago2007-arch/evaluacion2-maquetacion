@@ -85,22 +85,68 @@ function generarHTML(lista) {
 
 // TODO: devuelve solo los elementos de esa categoría.
 // Si categoria es 'todas', devuelve todos.
-function filtrarPorCategoria(lista, categoria) {}
+function filtrarPorCategoria(lista, categoria) {
+  if (categoria === "todas") {
+    return lista;
+  }
+
+  return lista.filter((item) => item.categoria === categoria);
+}
 
 // TODO: devuelve los elementos cuyo nombre o descripcion contienen el
 // texto, sin importar mayúsculas ni espacios al inicio o al final.
 // Si el texto está vacío, devuelve todos.
-function buscarPorTexto(lista, texto) {}
+function buscarPorTexto(lista, texto) {
+  const busqueda = texto.trim().toLowerCase();
+
+  if (busqueda === "") {
+    return lista;
+  }
+
+  return lista.filter(
+    (item) =>
+      item.nombre.toLowerCase().includes(busqueda) ||
+      item.descripcion.toLowerCase().includes(busqueda),
+  );
+}
 
 // TODO: devuelve una COPIA ordenada según el criterio:
 //   'nombre-asc'  A a Z por nombre (localeCompare)
 //   'valor-asc'   de menor a mayor según item[configuracion.campoOrden]
 //   'valor-desc'  de mayor a menor
-function ordenarItems(lista, criterio) {}
+function ordenarItems(lista, criterio) {
+  const copia = [...lista];
+
+  if (criterio === "nombre-asc") {
+    return copia.sort((a, b) => a.nombre.localeCompare(b.nombre));
+  }
+
+  if (criterio === "valor-asc") {
+    return copia.sort(
+      (a, b) => a[configuracion.campoOrden] - b[configuracion.campoOrden],
+    );
+  }
+
+  if (criterio === "valor-desc") {
+    return copia.sort(
+      (a, b) => b[configuracion.campoOrden] - a[configuracion.campoOrden],
+    );
+  }
+
+  return copia;
+}
 
 // TODO: aplica las tres funciones anteriores en cadena según el estado
 // ({ categoria, texto, orden }) y devuelve la lista resultante.
-function aplicarFiltros(lista, estadoActual) {}
+function aplicarFiltros(lista, estadoActual) {
+  let resultado = filtrarPorCategoria(lista, estadoActual.categoria);
+
+  resultado = buscarPorTexto(resultado, estadoActual.texto);
+
+  resultado = ordenarItems(resultado, estadoActual.orden);
+
+  return resultado;
+}
 
 /* ---------------------------------------------------------------
  * Issue #4 - Eventos (estas sí usan el DOM)
