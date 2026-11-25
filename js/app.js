@@ -19,9 +19,9 @@
 
 // Estado de la interfaz: lo que la persona eligió en los controles.
 const estado = {
-  categoria: 'todas',
-  texto: '',
-  orden: 'nombre-asc'
+  categoria: "todas",
+  texto: "",
+  orden: "nombre-asc",
 };
 
 /* ---------------------------------------------------------------
@@ -35,14 +35,47 @@ const estado = {
 // un badge con la categoría, la descripción, el valor de
 // item[configuracion.campoOrden] con su etiqueta, y tus 2 campos propios.
 function crearCard(item) {
+  return `
+    <div class="col">
+      <article class="card rounded-4 border-0 shadow h-100">
 
+        <img src="${item.imagen}"
+          class="card-img-top"
+          alt="Imagen de ${item.nombre}">
+
+        <div class="card-body">
+
+          <h3 class="card-title">${item.nombre}</h3>
+
+          <span class="badge">${item.categoria}</span>
+
+          <p class="card-text">${item.descripcion}</p>
+
+          <p>
+            <strong>${configuracion.etiquetaValor}:</strong>
+            ${item[configuracion.campoOrden]}
+          </p>
+
+          <p><strong>Tamaño:</strong> ${item.tamano}</p>
+
+          <p><strong>Vacunado:</strong> ${item.vacunado}</p>
+
+        </div>
+
+      </article>
+    </div>
+  `;
 }
 
 // TODO: devuelve el HTML de TODAS las tarjetas de la lista (map + join).
 // Si la lista está vacía, devuelve un mensaje (por ejemplo un <p>) que
 // diga que no hay resultados.
 function generarHTML(lista) {
+  if (lista.length === 0) {
+    return '<p class="text-center w-100">No hay resultados para tu búsqueda.</p>';
+  }
 
+  return lista.map(crearCard).join("");
 }
 
 /* ---------------------------------------------------------------
@@ -52,30 +85,22 @@ function generarHTML(lista) {
 
 // TODO: devuelve solo los elementos de esa categoría.
 // Si categoria es 'todas', devuelve todos.
-function filtrarPorCategoria(lista, categoria) {
-
-}
+function filtrarPorCategoria(lista, categoria) {}
 
 // TODO: devuelve los elementos cuyo nombre o descripcion contienen el
 // texto, sin importar mayúsculas ni espacios al inicio o al final.
 // Si el texto está vacío, devuelve todos.
-function buscarPorTexto(lista, texto) {
-
-}
+function buscarPorTexto(lista, texto) {}
 
 // TODO: devuelve una COPIA ordenada según el criterio:
 //   'nombre-asc'  A a Z por nombre (localeCompare)
 //   'valor-asc'   de menor a mayor según item[configuracion.campoOrden]
 //   'valor-desc'  de mayor a menor
-function ordenarItems(lista, criterio) {
-
-}
+function ordenarItems(lista, criterio) {}
 
 // TODO: aplica las tres funciones anteriores en cadena según el estado
 // ({ categoria, texto, orden }) y devuelve la lista resultante.
-function aplicarFiltros(lista, estadoActual) {
-
-}
+function aplicarFiltros(lista, estadoActual) {}
 
 /* ---------------------------------------------------------------
  * Issue #4 - Eventos (estas sí usan el DOM)
@@ -84,9 +109,7 @@ function aplicarFiltros(lista, estadoActual) {
 // TODO: calcula la lista con aplicarFiltros(items, estado), pinta el
 // resultado en #catalogo con innerHTML y actualiza #contador
 // (por ejemplo "Mostrando 5 de 12 resultados").
-function actualizarVista() {
-
-}
+function actualizarVista() {}
 
 // TODO: conecta los eventos y pinta por primera vez.
 //   click  en cada botón con data-categoria: actualiza estado.categoria
@@ -95,11 +118,14 @@ function actualizarVista() {
 //   change en #orden: actualiza estado.orden
 // Después de cada cambio llama a actualizarVista().
 function iniciar() {
+  document.getElementById("catalogo").innerHTML = generarHTML(items);
 
+  document.getElementById("contador").textContent =
+    `Mostrando ${items.length} resultados`;
 }
 
 // No cambies estas líneas: así el archivo también carga en el verificador,
 // donde no existe document.
-if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', iniciar);
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", iniciar);
 }
